@@ -48,7 +48,7 @@ You must replace `YOUR-API-KEY` with your private API key.
 </aside>
 
 
-# NPS<sub>&reg;</sub> Survey
+# NPS<sup>&reg;</sup> Survey
 
 ## Send survey right away
 
@@ -85,7 +85,7 @@ curl https://api.userpoll.io/v1/send_survey \
 }
 ```
 
-Send NPS<sub>&reg;</sub> right away to your customer.
+Send NPS<sup>&reg;</sup> right away to your customer.
 
 For Example:-
 In case of ecommerce store, sending this survey email could be helpful to get the response from the customer who just received an order.
@@ -141,7 +141,7 @@ curl https://api.userpoll.io/v1/send_survey \
 }
 ```
 
-Send NPS<sub>&reg;</sub> at a certain time / interval to your customer.
+Send NPS<sup>&reg;</sup> at a certain time / interval to your customer.
 
 For Example:-
 This endpoint may come handy when scheduling the survey email to be sent at certain time or interval. eg. `2.days` , `5.hours`, `1.week` etc.
