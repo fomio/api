@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: User Poll API Documentation
 
 language_tabs:
   - shell
@@ -8,7 +8,7 @@ toc_footers:
   - <a href='#'>Sign Up for a API Key</a>
 
 includes:
-  - errors
+  - http_codes
 
 search: true
 ---
@@ -20,140 +20,145 @@ search: true
 ```shell
 # Welcome to User Poll
 ```
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Hassel free User Polls & Surveys in minutes.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+This API is in <sup>Beta</sup> phase. We would like you to give it a try. Please [Sign Up](#) here to get an API Key.
 
-This example API documentation page was created with [Slate](http://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
 # Authentication
 
-> To authorize, use this code:
+> Example Request:
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+# Please pass the correct header with each request
+
+curl "https://api.userpoll.io/v1"
+  -H "Authorization: Token token="YOUR-API-KEY"
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+To interact with User Poll API, you will need an API Keys. You can receive the API key by [Signing Up](#) here.
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+Authentication is done via HTTP Basic authentication. We expect for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
+`Authorization: Token token="YOUR-API-KEY`
 
 <aside class="notice">
-You must replace `meowmeowmeow` with your personal API key.
+You must replace `YOUR-API-KEY` with your private API key.
 </aside>
 
 
-# Kittens
+# NPS<sub>&reg;</sub> Survey
 
-## Get All Kittens
+## Send survey right away
 
-```ruby
-require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+> Example Request
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl https://api.userpoll.io/v1/send_survey \
+      -H 'Authorization: Token token="YOUR-API-KEY"' \
+      -H 'Content-Type: application/json' \
+      -d '{ "survey_id":"1001", "email":"fake@email.com" }'
 ```
 
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Isis",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/3"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
+> <span style="color: #2ecc71">Success Resonse</span>
 
 ```json
 {
-  "id": 2,
-  "name": "Isis",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "status": "success",
+  "message": "Email Successfully Sent"
 }
 ```
 
-This endpoint retrieves a specific kitten.
+> <span style="color: #e74c3c">Error Resonse</span>
 
-<aside class="warning">If you're not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
+```json
+{
+  "status": "error",
+  "type": "invalid_params",
+  "message": "Invalid Parameter/s",
+  "params": {
+    "survey_id": "Invalid Survey ID",
+    "email": "Invalid Email Address"
+  }
+}
+```
+
+Send NPS<sub>&reg;</sub> right away to your customer.
+
+For Example:-
+In case of ecommerce store, sending this survey email could be helpful to get the response from the customer who just received an order.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST https://api.userpoll.io/send_survey`
 
-### URL Parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the cat to retrieve
+Parameter | Default | Description
+--------- | ------- | -----------
+survey_id | false | Survey you created. `survey_id` is available on your dashboard.
+email | true | Your email by default (Used to send a test email). Provide customer email address to send email to customer.
+
+<aside class="success">
+  Remember — <code>survey_id</code> and <code>email</code> both are required!
+</aside>
+
+## Send survey at certain time
+
+
+> Example Request
+
+```shell
+curl https://api.userpoll.io/v1/send_survey \
+      -H 'Authorization: Token token="YOUR-API-KEY"' \
+      -H 'Content-Type: application/json' \
+      -d '{ "survey_id":"1001", "email":"fake@email.com", "wait_for": "8.hours" }'
+```
+
+> <span style="color: #2ecc71">Success Resonse</span>
+
+```json
+{
+  "status": "success",
+  "message": "Email Successfully Sent"
+}
+```
+
+> <span style="color: #e74c3c">Error Resonse</span>
+
+```json
+{
+  "status": "error",
+  "type": "invalid_params",
+  "message": "Invalid Parameter/s",
+  "params": {
+    "survey_id": "Invalid Survey ID",
+    "email": "Invalid Email Address",
+    "wait_for": "Invalid Wait Time"
+  }
+}
+```
+
+Send NPS<sub>&reg;</sub> at a certain time / interval to your customer.
+
+For Example:-
+This endpoint may come handy when scheduling the survey email to be sent at certain time or interval. eg. `2.days` , `5.hours`, `1.week` etc.
+
+### HTTP Request
+
+`POST https://api.userpoll.io/send_survey`
+
+### Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+survey_id | false | Survey you created. `survey_id` is available on your dashboard.
+email | true | Your email by default (Used to send a test email). Provide customer email address to send email to customer.
+wait_for | false | It allows you to wait before sending the survey. Accepts, day(s), week(s), month(s).
+
+<aside class="notice">
+  Note — <code>wait_for</code> is optional!
+</aside>
 

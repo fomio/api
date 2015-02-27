@@ -35,3 +35,6 @@ configure :build do
   # set :http_prefix, "/Content/images/"
 end
 
+configure :development do
+  activate :livereload
+end
