@@ -25,6 +25,7 @@ under the License.
     <%= stylesheet_link_tag :screen, media: :screen %>
     <%= stylesheet_link_tag :print, media: :print %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Questrial" />
     <% if current_page.data.search %>
       <%= javascript_include_tag  "all" %>
     <% else %>
@@ -48,7 +49,7 @@ under the License.
       </span>
     </a>
     <div class="tocify-wrapper">
-      <a href="http://userpoll.io"><%= image_tag "logo.png" %></a>
+      <a href="http://fom.io"><%= image_tag "logo.png" %></a>
       <% if language_tabs %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>

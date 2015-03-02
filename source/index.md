@@ -2,7 +2,7 @@
 title: User Poll API Documentation
 
 language_tabs:
-  - shell
+  - code
 
 toc_footers:
   - <a href='#'>Sign Up for a API Key</a>
@@ -18,7 +18,7 @@ search: true
 > User Poll
 
 ```shell
-# Welcome to User Poll
+# Welcome to Fom.io
 ```
 Hassel free User Polls & Surveys in minutes.
 
@@ -27,13 +27,14 @@ This API is in <sup>Beta</sup> phase. We would like you to give it a try. Please
 
 # Authentication
 
-> Example Request:
+> Example Form:
 
-```shell
-# Please pass the correct header with each request
-
-curl "https://api.userpoll.io/v1"
-  -H "Authorization: Token token="YOUR-API-KEY"
+```html
+<form action="http://fom.io/s/fd9d" method="POST">
+  <input type="hidden" name="utf8" value="β">
+  <input type="text" name="name" placeholder="Name">
+  <input type="submit" name="submit">
+</form>
 ```
 
 

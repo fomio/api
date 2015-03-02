@@ -23,12 +23,12 @@ under the License.
 
 // BACKGROUND COLORS
 ////////////////////
-$nav-bg: #393939;
+$nav-bg: #34495e;
 $examples-bg: #292929;
 $code-bg: #292929;
 $code-annotation-bg: #1c1c1c;
-$nav-subitem-bg: #ff666b;
-$nav-active-bg: #ff5a5f;
+$nav-subitem-bg: #8ea1ad;
+$nav-active-bg: #6C7A89;
 $lang-select-border: #000;
 $lang-select-bg: #222;
 $lang-select-active-bg: $examples-bg; // feel free to change this to blue or something
@@ -68,7 +68,8 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 ////////////////////
 %default-font {
   // font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-family: "Avant Garde",Avantgarde,"Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+  // font-family: "Avant Garde",Avantgarde,"Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+  font-family: Questrial;
   font-size: 15px;
 }
 
