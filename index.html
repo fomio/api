@@ -9,11 +9,12 @@
     <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Questrial" />
       <script src="javascripts/all.js" type="text/javascript"></script>
 
       <script>
         $(function() {
-          setupLanguages(["shell"]);
+          setupLanguages(["code"]);
         });
       </script>
   </head>
@@ -26,9 +27,9 @@
       </span>
     </a>
     <div class="tocify-wrapper">
-      <a href="http://userpoll.io"><img src="images/logo.png" /></a>
+      <a href="http://fom.io"><img src="images/logo.png" /></a>
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="code">code</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -48,7 +49,7 @@
 <blockquote>
 <p>User Poll</p>
 </blockquote>
-<pre><code class="highlight shell"><span class="c"># Welcome to User Poll</span>
+<pre><code class="highlight shell"><span class="c"># Welcome to Fom.io</span>
 </code></pre>
 
 <p>Hassel free User Polls &amp; Surveys in minutes.</p>
@@ -58,13 +59,14 @@
 <h1 id="authentication">Authentication</h1>
 
 <blockquote>
-<p>Example Request:</p>
+<p>Example Form:</p>
 </blockquote>
-<pre><code class="highlight shell"><span class="c"># Please pass the correct header with each request</span>
-
-curl <span class="s2">"https://api.userpoll.io/v1"</span>
-  -H <span class="s2">"Authorization: Token token="</span>YOUR-API-KEY<span class="s2">"
-</span></code></pre>
+<pre><code class="highlight html"><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"http://fom.io/s/fd9d"</span> <span class="na">method=</span><span class="s">"POST"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"utf8"</span> <span class="na">value=</span><span class="s">"β"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"name"</span> <span class="na">placeholder=</span><span class="s">"Name"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">name=</span><span class="s">"submit"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre>
 
 <p>To interact with User Poll API, you will need an API Keys. You can receive the API key by <a href="#">Signing Up</a> here.</p>
 
@@ -259,7 +261,7 @@ This endpoint may come handy when scheduling the survey email to be sent at cert
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="code">code</a>
           </div>
       </div>
     </div>
